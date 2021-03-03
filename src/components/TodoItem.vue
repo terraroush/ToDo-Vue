@@ -1,7 +1,7 @@
 <template>
   <div>
       <h3 :class="{completed: todo.complete}">{{todo.name}}</h3>
-      <button @click="handleClick">Mark Complete</button>
+      <button @click="handleClick">{{buttonText}}</button>
 </div>
 </template>
 
@@ -12,6 +12,11 @@ export default {
     methods: {
         handleClick() {
             this.$emit("status-change", this.todo);
+        }
+    },
+    computed: {
+        buttonText() {
+            return this.todo.complete ? "Mark Incomplete" : "Mark Complete";
         }
     }
 }
